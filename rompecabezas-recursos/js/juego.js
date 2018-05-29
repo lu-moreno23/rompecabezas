@@ -1,5 +1,5 @@
 // Arreglo que contiene las intrucciones del juego 
-var instrucciones = [];
+var instrucciones = ["1- El cuadrado inicial se movera de acuerdo a la direccion de las flechas del teclado", "2- Move las flechas hasta obtener la imagen final"];
 // Arreglo para ir guardando los movimientos que se vayan realizando
 var movimientos = [];
 
