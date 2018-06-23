@@ -22,7 +22,7 @@ Para eso deberás usar la función ya implementada mostrarInstruccionEnLista().
 Podés ver su implementación en la ultima parte de este codigo. */
 function mostrarInstrucciones(instrucciones) {
     for (var i = 0; i < instrucciones.length; i++){
-      mostrarInstruccionEnLista(instrucciones[i], lista-instrucciones);
+      mostrarInstruccionEnLista(instrucciones[i], 'lista-instrucciones');
     }
 }
 
@@ -37,12 +37,23 @@ function guardarMovimiento(direccion){
 /* Esta función va a chequear si el Rompecabezas esta en la posicion ganadora. 
 Existen diferentes formas de hacer este chequeo a partir de la grilla. */
 function chequearSiGano() {
-    //COMPLETAR
+    for (var i = 0; i < grilla.length; i++){
+      for (var j = 0; j < grilla.length; j++){
+        for (var k = 0; k < grilla.length; k++){
+          let ordenCorrectoPiezas = grilla;
+          if (ordenCorrectoPiezas === grilla){
+            return true;
+          } else{
+            return false;
+          }
+        }
+      }
+    }
 }
 
 // Implementar alguna forma de mostrar un cartel que avise que ganaste el juego
 function mostrarCartelGanador() {
-    //COMPLETAR
+      alert("Ganaste");
 }
 
 /* Función que intercambia dos posiciones en la grilla.
