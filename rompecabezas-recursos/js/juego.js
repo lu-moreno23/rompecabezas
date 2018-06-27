@@ -11,6 +11,12 @@ var grilla = [
     [7, 8, 9]
 ];
 
+const grillaGanadora = [
+  [1, 2, 3],
+  [4, 5, 6],
+  [7, 8, 9]
+];
+
 /* Estas dos variables son para guardar la posición de la pieza vacía. 
 Esta posición comienza siendo la [2, 2]*/
 var filaVacia = 2;
@@ -36,12 +42,13 @@ function guardarMovimiento(direccion){
 
 /* Esta función va a chequear si el Rompecabezas esta en la posicion ganadora. 
 Existen diferentes formas de hacer este chequeo a partir de la grilla. */
+
 function chequearSiGano() {
     for (var i = 0; i < grilla.length; i++){
       for (var j = 0; j < grilla.length; j++){
         for (var k = 0; k < grilla.length; k++){
-          let ordenCorrectoPiezas = grilla;
-          if (ordenCorrectoPiezas === grilla){
+          //let ordenCorrectoPiezas = grilla;
+          if (grilla === grillaGanadora){
             return true;
           } else{
             return false;
@@ -53,7 +60,10 @@ function chequearSiGano() {
 
 // Implementar alguna forma de mostrar un cartel que avise que ganaste el juego
 function mostrarCartelGanador() {
-      alert("Ganaste");
+  if (chequearSiGano() === true){
+    swal("Ganaste");
+  }
+      
 }
 
 /* Función que intercambia dos posiciones en la grilla.
@@ -67,18 +77,31 @@ En vez de intercambiar esos valores vamos a terminar teniendo en ambas posicione
 Se te ocurre cómo solucionar esto con una variable temporal?
 */
 function intercambiarPosicionesGrilla(filaPos1, columnaPos1, filaPos2, columnaPos2) {
-    //COMPLETAR
+  var piezaAnterior = grilla[filaPos1][columnaPos1];
+  var piezaNueva = grilla[filaPos2][columnaPos2];
+  grilla[filaPos2][columnaPos2] = piezaAnterior;
+  grilla[filaPos1][columnaPos1] = piezaNueva;
 }
 
 // Actualiza la posición de la pieza vacía
 function actualizarPosicionVacia(nuevaFila, nuevaColumna) {
-    //COMPLETAR
+  debugger;
+    nuevaFilaPiezaVacia = nuevaFila;
+    nuevaColumnaPiezaVacia = nuevaColumna;
+    /*if (posicionValida(fila, columna) === true){
+        moverEnDireccion(direccion);
+        let nuevaPosicion = grilla[nuevaFila][nuevaColumna];
+    }*/
 }
 
 
 // Para chequear si la posicón está dentro de la grilla.
 function posicionValida(fila, columna) {
-    //COMPLETAR
+    if (fila > 2 || fila < 0 || columna > 2 || columna < 0){
+      return false;
+    } else{
+      return true;
+    }
 }
 
 /* Movimiento de fichas, en este caso la que se mueve es la blanca intercambiando su posición con otro elemento.
@@ -101,12 +124,14 @@ function moverEnDireccion(direccion) {
     
   // Mueve pieza hacia la derecha, reemplazandola con la blanca
   else if (direccion === codigosDireccion.DERECHA) {
-    //COMPLETAR
+    nuevaFilaPiezaVacia = filaVacia - 1;
+    nuevaColumnaPiezaVacia = columnaVacia;
   }
     
   // Mueve pieza hacia la izquierda, reemplazandola con la blanca
   else if (direccion === codigosDireccion.IZQUIERDA) {
-    // COMPLETAR
+    nuevaFilaPiezaVacia = filaVacia + 1;
+    nuevaColumnaPiezaVacia = columnaVacia;
   }
 
   /* A continuación se chequea si la nueva posición es válida, si lo es, se intercambia. 
@@ -143,7 +168,7 @@ var codigosDireccion = {
     ARRIBA: 38,
     DERECHA: 39,
     ABAJO: 40
-}
+};
 
 /* Funcion que realiza el intercambio logico (en la grilla) y ademas actualiza
 el intercambio en la pantalla (DOM). Para que funcione debera estar implementada
@@ -248,7 +273,7 @@ function capturarTeclas() {
             }
             evento.preventDefault();
         }
-    })
+    });
 }
 
 /* Se inicia el rompecabezas mezclando las piezas 60 veces 
