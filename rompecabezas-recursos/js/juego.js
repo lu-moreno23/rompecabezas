@@ -86,12 +86,10 @@ function intercambiarPosicionesGrilla(filaPos1, columnaPos1, filaPos2, columnaPo
 // Actualiza la posición de la pieza vacía
 function actualizarPosicionVacia(nuevaFila, nuevaColumna) {
   debugger;
-    nuevaFilaPiezaVacia = nuevaFila;
-    nuevaColumnaPiezaVacia = nuevaColumna;
-    /*if (posicionValida(fila, columna) === true){
+    if (posicionValida(fila, columna) === true){
         moverEnDireccion(direccion);
         let nuevaPosicion = grilla[nuevaFila][nuevaColumna];
-    }*/
+    }
 }
 
 
