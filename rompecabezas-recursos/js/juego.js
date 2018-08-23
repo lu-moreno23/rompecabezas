@@ -17,6 +17,8 @@ const grillaGanadora = [
   [7, 8, 9]
 ];
 
+
+
 /* Estas dos variables son para guardar la posición de la pieza vacía. 
 Esta posición comienza siendo la [2, 2]*/
 var filaVacia = 2;
@@ -35,35 +37,33 @@ function mostrarInstrucciones(instrucciones) {
 /* COMPLETAR: Crear función que agregue la última dirección al arreglo de movimientos
 y utilice actualizarUltimoMovimiento para mostrarlo en pantalla */
 
-function guardarMovimiento(direccion){
-  actualizarUltimoMovimiento(direccion);
+function agregarUltimoMovimiento(direccion){
   movimientos.push(direccion);
+  mostrarUltimoMovimiento(direccion);
 }
 
 /* Esta función va a chequear si el Rompecabezas esta en la posicion ganadora. 
 Existen diferentes formas de hacer este chequeo a partir de la grilla. */
 
-function chequearSiGano() {
-    for (var i = 0; i < grilla.length; i++){
-      for (var j = 0; j < grilla.length; j++){
-        for (var k = 0; k < grilla.length; k++){
-          //let ordenCorrectoPiezas = grilla;
-          if (grilla === grillaGanadora){
-            return true;
-          } else{
-            return false;
-          }
-        }
-      }
+function chequearSiGano(){
+  let valorActual = 0;
+  let ultimoValorVisto = 0;
+  for (let i = 0; i < grilla.length; i++){
+    for (let j = 0; j < grilla.length; j++){
+      valorActual = grilla[i][j];
+      if(ultimoValorVisto > valorActual){
+        return false;
+      } ultimoValorVisto = valorActual;
     }
+  }
+  return true;
 }
 
 // Implementar alguna forma de mostrar un cartel que avise que ganaste el juego
 function mostrarCartelGanador() {
-  if (chequearSiGano() === true){
+  if (chequearSiGano()){
     swal("Ganaste");
-  }
-      
+  }      
 }
 
 /* Función que intercambia dos posiciones en la grilla.
@@ -85,10 +85,6 @@ function intercambiarPosicionesGrilla(filaPos1, columnaPos1, filaPos2, columnaPo
 
 // Actualiza la posición de la pieza vacía
 function actualizarPosicionVacia(nuevaFila, nuevaColumna) {
-    /*if (posicionValida(nuevaFila, nuevaColumna) === true){
-        moverEnDireccion();
-        let nuevaPosicion = grilla[nuevaFila][nuevaColumna];
-}*/
 filaVacia = nuevaFila;
 columnaVacia = nuevaColumna;
   }
@@ -96,12 +92,11 @@ columnaVacia = nuevaColumna;
 
 // Para chequear si la posicón está dentro de la grilla.
 function posicionValida(fila, columna) {
-    if (fila > 2 || fila < 0 || columna > 2 || columna < 0){
-      return false;
-    } else{
-      return true;
-    }
+  const posicionEnFilaValida = (fila >= 0 && fila <= 2);
+  const posicionEnColumnaValida = (columna >= 0 && columna <= 2);
+  return posicionEnFilaValida && posicionEnColumnaValida;
 }
+    
 
 /* Movimiento de fichas, en este caso la que se mueve es la blanca intercambiando su posición con otro elemento.
 Las direcciones están dadas por números que representa: arriba (38), abajo (40), izquierda (37), derecha (39) */
@@ -123,14 +118,14 @@ function moverEnDireccion(direccion) {
     
   // Mueve pieza hacia la derecha, reemplazandola con la blanca
   else if (direccion === codigosDireccion.DERECHA) {
-    nuevaFilaPiezaVacia = filaVacia - 1;
-    nuevaColumnaPiezaVacia = columnaVacia;
+    nuevaFilaPiezaVacia = filaVacia;
+    nuevaColumnaPiezaVacia = columnaVacia - 1;
   }
     
   // Mueve pieza hacia la izquierda, reemplazandola con la blanca
   else if (direccion === codigosDireccion.IZQUIERDA) {
-    nuevaFilaPiezaVacia = filaVacia + 1;
-    nuevaColumnaPiezaVacia = columnaVacia;
+    nuevaFilaPiezaVacia = filaVacia;
+    nuevaColumnaPiezaVacia = columnaVacia + 1;
   }
 
   /* A continuación se chequea si la nueva posición es válida, si lo es, se intercambia. 
@@ -142,7 +137,7 @@ function moverEnDireccion(direccion) {
         actualizarPosicionVacia(nuevaFilaPiezaVacia, nuevaColumnaPiezaVacia);
 
   //COMPLETAR: Agregar la dirección del movimiento al arreglo de movimientos
-
+agregarUltimoMovimiento(direccion);
     }
 }
 
@@ -201,7 +196,7 @@ function intercambiarPosicionesDOM(idPieza1, idPieza2) {
 
 /* Actualiza la representación visual del último movimiento 
 en la pantalla, representado con una flecha. */
-function actualizarUltimoMovimiento(direccion) {
+function mostrarUltimoMovimiento(direccion) {
   ultimoMov = document.getElementById('flecha');
   switch (direccion) {
     case codigosDireccion.ARRIBA:
@@ -280,9 +275,9 @@ y ejecutando la función para que se capturen las teclas que
 presiona el usuario */
 function iniciar() {
     mostrarInstrucciones(instrucciones);
-    mezclarPiezas(30);
+    mezclarPiezas(10);
     capturarTeclas();
-    console.log(intercambiarPosiciones(1, 1, 1, 2));
+    //console.log(intercambiarPosiciones(1, 1, 1, 2));
 }
 
 
