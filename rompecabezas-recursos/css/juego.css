@@ -37,8 +37,9 @@ li::before {
 
 .col-60 {
   background: #E84A5F;
-  height: 600px;
-  width: 600px;
+  height: 603.5px;
+  width: 603.5px;
+  border: 2px solid black;
 
 }
 
@@ -63,6 +64,7 @@ li::before {
 img {
 width:200px;
 height: 200px;
+border: 0.5px solid #000;
 float: left;
 }
 
@@ -76,3 +78,11 @@ float: left;
   font-size: 10px;
 }
 
+#footer{
+  background: #BEBEBE;
+  height: 40px;
+}
+
+#final{
+  border: 1px solid black;
+}

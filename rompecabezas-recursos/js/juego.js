@@ -1,5 +1,6 @@
 // Arreglo que contiene las intrucciones del juego 
-var instrucciones = ["1- El cuadrado inicial se movera de acuerdo a la direccion de las flechas del teclado", "2- Move las flechas hasta obtener la imagen final"];
+var instrucciones = ["1- El cuadrado inicial se movera de acuerdo a la direccion de las flechas del teclado", 
+"2- Move las flechas hasta obtener la imagen final"];
 // Arreglo para ir guardando los movimientos que se vayan realizando
 var movimientos = [];
 
@@ -275,7 +276,7 @@ y ejecutando la función para que se capturen las teclas que
 presiona el usuario */
 function iniciar() {
     mostrarInstrucciones(instrucciones);
-    mezclarPiezas(10);
+    mezclarPiezas(60);
     capturarTeclas();
     //console.log(intercambiarPosiciones(1, 1, 1, 2));
 }
