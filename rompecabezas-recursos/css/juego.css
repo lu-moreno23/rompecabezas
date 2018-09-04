@@ -42,8 +42,8 @@ li::before {
 
 .col-60 {
   background: #E84A5F;
-  height: 603.5px;
-  width: 603.5px;
+  height: 600px;
+  width: 600px;
   border: 2px solid black;
 }
 
@@ -53,6 +53,13 @@ li::before {
 
 .texto-centrado {
   text-align: center;
+}
+
+#juego {
+width: 600px;
+height: 600px;
+background: #E84A5F;
+margin: 0;
 }
 
 #juego div {
@@ -70,19 +77,19 @@ li::before {
   }
 }
 
-img {
+/*img {
   width: 200px;
   height: 200px;
   border: 0.5px solid #000;
   float: left;
-}
+}*/
 
 #titulo {
   font-family: 'Shadows Into Light', cursive;
   color: black;
 }
 
-#instrucciones #footer {
+#instrucciones {
   font-family: 'Open Sans', sans-serif;
   font-size: 10px;
 }
@@ -95,4 +102,15 @@ img {
 
 #final {
   border: 1px solid black;
+}
+
+.piezasJuego{
+  width: 33.333%;
+  height: 33.333%;
+  float: left;
+}
+
+.piezasJuego img {
+  border: 2px solid black;
+  width: 100%;
 }
