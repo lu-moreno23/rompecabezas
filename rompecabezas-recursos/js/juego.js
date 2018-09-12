@@ -13,12 +13,6 @@ var grilla = [
   [7, 8, 9]
 ];
 
-/*const grillaGanadora = [
-  [1, 2, 3],
-  [4, 5, 6],
-  [7, 8, 9]
-];*/
-
 
 
 /* Estas dos variables son para guardar la posición de la pieza vacía. 
@@ -109,13 +103,13 @@ function moverEnDireccion(direccion) {
 
   // Mueve pieza hacia la abajo, reemplazandola con la blanca
   if (direccion === codigosDireccion.ABAJO) {
-    nuevaFilaPiezaVacia = filaVacia - 1;
+    nuevaFilaPiezaVacia = filaVacia + 1;
     nuevaColumnaPiezaVacia = columnaVacia;
   }
 
   // Mueve pieza hacia arriba, reemplazandola con la blanca
   else if (direccion === codigosDireccion.ARRIBA) {
-    nuevaFilaPiezaVacia = filaVacia + 1;
+    nuevaFilaPiezaVacia = filaVacia - 1;
     nuevaColumnaPiezaVacia = columnaVacia;
   }
 
@@ -143,6 +137,7 @@ function moverEnDireccion(direccion) {
     agregarUltimoMovimiento(direccion);
   }
 }
+
 
 
 //////////////////////////////////////////////////////////

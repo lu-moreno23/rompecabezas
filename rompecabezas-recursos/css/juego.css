@@ -56,10 +56,10 @@ li::before {
 }
 
 #juego {
-width: 600px;
-height: 600px;
-background: #E84A5F;
-margin: 0;
+  width: 600px;
+  height: 600px;
+  background: #E84A5F;
+  margin: 0;
 }
 
 #juego div {
@@ -76,13 +76,6 @@ margin: 0;
     opacity: 1;
   }
 }
-
-/*img {
-  width: 200px;
-  height: 200px;
-  border: 0.5px solid #000;
-  float: left;
-}*/
 
 #titulo {
   font-family: 'Shadows Into Light', cursive;
@@ -101,16 +94,18 @@ margin: 0;
 }
 
 #final {
+  width: 200px;
+  height: 200px;
   border: 1px solid black;
 }
 
-.piezasJuego{
+.piezasJuego {
   width: 33.333%;
   height: 33.333%;
   float: left;
 }
 
 .piezasJuego img {
-  border: 2px solid black;
+  border: solid 1px black;
   width: 100%;
 }
